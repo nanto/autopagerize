@@ -374,6 +374,7 @@ AutoPager.prototype.addPage = function(htmlDoc, page) {
         this.requestURL.replace(/&/g, '&amp;') + '">' + (++this.pageNum) + '</a>'
     return page.map(function(i) {
         var pe = document.importNode(i, true)
+        pe.setAttribute('data-autopagerize-page-url', self.requestURL)
         self.insertPoint.parentNode.insertBefore(pe, self.insertPoint)
         var ev = document.createEvent('MutationEvent')
         ev.initMutationEvent('AutoPagerize_DOMNodeInserted', true, false,
